@@ -4,6 +4,8 @@ namespace ClientManagement.Data
 {
     public class DbContextConfig : DbContext
     {
-        public DbContextConfig(DbContextOptions<DbContextConfig> options) { }
+        public DbContextConfig(DbContextOptions<DbContextConfig> options) : base(options) {
+        
+        }
     }
 }

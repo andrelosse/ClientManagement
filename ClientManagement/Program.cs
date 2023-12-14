@@ -1,12 +1,13 @@
-using Microsoft.Extensions.Options;
-using MySql.Data.MySqlClient;
+using ClientManagement.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+var serverVersion = new MySqlServerVersion(new Version(8, 2, 00));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<DbContextConfig>(options => 
-    options.UseMySql(builder.Configuration.GetConnectionString("Default")));
+    options.UseMySql(connectionString: builder.Configuration.GetConnectionString("Default"), serverVersion: serverVersion));
 
 var app = builder.Build();
 
