@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ClientManagement.Models
 {
+
+    [Microsoft.EntityFrameworkCore.Index(nameof(Email), IsUnique = true)]
+    [Microsoft.EntityFrameworkCore.Index(nameof(Documento), IsUnique = true)]
+    [Microsoft.EntityFrameworkCore.Index(nameof(InscricaoEstadual), IsUnique = true)]
     public class Cliente
     {
         [Key]
@@ -107,13 +110,13 @@ namespace ClientManagement.Models
     {
         [Key]
         public int GeneroId { get; set; }
-        public int NomeGenero { get; set; }
+        public string NomeGenero { get; set; }
     }
 
     public class TipoPessoa
     {
         [Key]
         public int TipoPessoaId { get; set; }
-        public int NomeTipo { get; set; }
+        public string NomeTipo { get; set; }
     }
 }
